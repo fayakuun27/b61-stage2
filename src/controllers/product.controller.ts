@@ -33,6 +33,7 @@ export const updateProduct = async (req: Request, res: Response) => {
     where: { id: Number(id) },
     data: { name, price },
   });
+  
 
   res.json(updated);
 };
