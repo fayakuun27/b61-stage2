@@ -37,11 +37,11 @@ export const getAllProducts = async (req: Request, res: Response): Promise<any> 
 export const updateProduct = async (req: Request, res: Response): Promise<any> => {
   const { id } = req.params;
   const { name, description, price } = req.body;
-  const imageUrl = req.file?.filename;
+  const image = req.file?.filename;
   try {
     const product = await prisma.product.update({
       where: { id: Number(id) },
-      data: { name, description, price: parseFloat(price),imageUrl: imageUrl || null },
+      data: { name, description, price: parseFloat(price),imageUrl: image || null },
     });
     res.json(product);
   } catch (err: any) {

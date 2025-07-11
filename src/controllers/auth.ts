@@ -7,9 +7,6 @@ export const register = async (req: Request, res: Response) : Promise<any>=> {
   const { email, password} = req.body;
   const image = req.file?.filename;
   try {
-    
- 
-
   if (!email || !password) return res.status(400).json({ error: 'Email and password are required' });
 
   const existingUser = await prisma.user.findUnique({ where: { email } });
